@@ -7,6 +7,7 @@ package fuzzy;
 
 import static fuzzy.tsukamoto.luaslahan;
 import java.util.Scanner;
+
 /**
  *
  * @author Alif Rifky
@@ -18,8 +19,6 @@ public class tsukamoto {
     static double kondisitanaman = 0;
     public static double dosis;
     String hasil_dosis;
-
-   
 
     public tsukamoto(double input_luaslahan, double input_usia, double input_kondisitanaman) {
         luaslahan = input_luaslahan;
@@ -41,29 +40,28 @@ public class tsukamoto {
     double a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27;
     double z1, z2, z3, z4, z5, z6, z7, z8, z9, z10, z11, z12, z13, z14, z15, z16, z17, z18, z19, z20, z21, z22, z23, z24, z25, z26, z27;
 
- 
-    
     public String proses() {
         // INISIALISAI VARIBEL LUAS LAHAN
-        double luaslahan_kecil_bawah = 0, luaslahan_kecil_atas = 36000;
+        double luaslahan_kecil_bawah = 1000, luaslahan_kecil_atas = 36000;
         double luaslahan_sedang_bawah = 24000, luaslahan_sedang_tengah = 42000, luaslahan_sedang_atas = 60000;
         double luaslahan_tinggi_bawah = 48000, luaslahan_tinggi_atas = 72000;
 
         // INISIALISAI VARIBEL USIA
-        double usia_muda_bawah = 0, usia_muda_atas = 10;
+        double usia_muda_bawah = 1, usia_muda_atas = 10;
         double usia_sedang_bawah = 8, usia_sedang_tengah = 11, usia_sedang_atas = 14;
         double usia_tua_bawah = 12, usia_tua_atas = 16;
 
         // INISIALISAI VARIBEL KONDISI TANAMAN
-        double kondisitanaman_tidakparah_bawah = 0, kondisitanaman_tidakparah_atas = 3;
+        double kondisitanaman_tidakparah_bawah = 1, kondisitanaman_tidakparah_atas = 3;
         double kondisitanaman_sedang_bawah = 2, kondisitanaman_sedang_tengah = 3.5, kondisitanaman_sedang_atas = 5;
-        double kondisitanaman_parah_bawah = 4, kondisitanaman_parah_atas = 6;
+        double kondisitanaman_parah_bawah = 2, kondisitanaman_parah_atas = 7;
 
         // INISIALISAI VARIBEL DOSIS
-        double dosis_sedikit_bawah = 0, dosis_sedikit_atas = 9;
-        double dosis_sedang_bawah = 5, dosis_sedang_tengah = 12, dosis_sedang_atas = 19;
-        double dosis_banyak_bawah = 15, dosis_banyak_atas = 50;
+        double dosis_sedikit_bawah = 25, dosis_sedikit_atas = 50;
+        double dosis_sedang_bawah = 45, dosis_sedang_tengah = 67.5, dosis_sedang_atas = 90;
+        double dosis_banyak_bawah = 85, dosis_banyak_atas = 100;
         //fuzzyfikasi//
+
         // fungsi keanggotaan luas rendah
         if (luaslahan < luaslahan_kecil_bawah) {
             nluaslahan_sempit = 1;
@@ -322,10 +320,16 @@ public class tsukamoto {
                 + AxZ9 + AxZ10 + AxZ11 + AxZ12 + AxZ13 + AxZ14 + AxZ15
                 + AxZ16 + AxZ17 + AxZ18 + AxZ19 + AxZ20 + AxZ21 + AxZ22
                 + AxZ23 + AxZ24 + AxZ25 + AxZ26 + AxZ27;
+        System.out.println( +AxZ1+" "+ AxZ2 +" "+ AxZ3 +" "+ AxZ4 +" "+ AxZ5 +" "+ AxZ6 +" "+ AxZ7 +" "+ AxZ8+" "+
+                + AxZ9 +" "+ AxZ10 + " "+AxZ11 +" "+ AxZ12 +" "+ AxZ13 +" "+ AxZ14 +" "+ AxZ15
+                +" "+ AxZ16 + " "+AxZ17 + " "+AxZ18 +" "+ AxZ19 +" "+ AxZ20 +" "+ AxZ21 +" "+ AxZ22
+                +" "+ AxZ23 +" "+ AxZ24 +" "+ AxZ25 +" "+ AxZ26 +" "+ AxZ27);
         double sum_A = a1 + a2 + a3 + a4 + a5 + a6 + a7 + a8 + a9 + a10
                 + a11 + a12 + a13 + a14 + a15 + a16 + a17 + a18 + a19
                 + a20 + a21 + a22 + a23 + a24 + a25 + a26 + a27;
         dosis = sum_AxZ / sum_A;
+        System.out.println(sum_AxZ);
+        System.out.println(sum_A);
         System.out.println(dosis);
         // fungsi keanggotaan dosis sedikit
         if (dosis < dosis_sedikit_bawah) {
@@ -353,23 +357,19 @@ public class tsukamoto {
         } else {
             ndosis_banyak = 1;
         }
-        
-        
-         // membandingkan masing2 fungsi keanggotaan untuk mencari hasil akhir
-        if (ndosis_sedikit > ndosis_sedang && ndosis_sedikit > ndosis_sedikit)
-              hasil_dosis = "dosis sedikit";
-         
-        else if (ndosis_sedang > ndosis_sedikit && ndosis_sedang > ndosis_banyak)
-       
-             hasil_dosis = "dosis sedang";
-        else if (ndosis_banyak > ndosis_sedikit && ndosis_banyak > ndosis_sedang)
-       
-            hasil_dosis = "dosis tiggi";
-        else
-           
-            hasil_dosis = "Dosis sangat Tinggi";
-        return hasil_dosis;
 
+        // membandingkan masing2 fungsi keanggotaan untuk mencari hasil akhir
+        if (ndosis_sedikit > ndosis_sedang && ndosis_sedikit > ndosis_sedikit) {
+            hasil_dosis = "dosis sedikit";
+        } else if (ndosis_sedang > ndosis_sedikit && ndosis_sedang > ndosis_banyak) {
+            hasil_dosis = "dosis sedang";
+        } else if (ndosis_banyak > ndosis_sedikit && ndosis_banyak > ndosis_sedang) {
+            hasil_dosis = "dosis tiggi";
+        } else {
+            hasil_dosis = "Dosis sangat Tinggi";
+        }
+        return hasil_dosis;
     }
-    
+         
 }
+

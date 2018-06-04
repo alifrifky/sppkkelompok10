@@ -37,6 +37,9 @@ public class c_sppkuser {
             System.out.println(C1);
             C2 = Double.parseDouble(viewSppkuser.getInput_usia());
             System.out.println(C2);
+             C3 = Double.parseDouble(viewSppkuser.getkondisi());
+            System.out.println(C2);
+            
 //            C3 = Integer.parseInt(String.valueOf(viewSppkuser.getkondisi1().getSelectedIndex()));
 
 

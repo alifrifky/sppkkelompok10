@@ -37,21 +37,16 @@ public class view_sppkuser extends javax.swing.JFrame {
     private void initComponents() {
 
         kondisi = new javax.swing.JComboBox<>();
-        btn_jawaban = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        hasil = new javax.swing.JTextArea();
         btn_panel = new javax.swing.JButton();
         input_luaslahan = new javax.swing.JTextField();
         input_usia = new javax.swing.JTextField();
         input_kondisi = new javax.swing.JTextField();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
-        jCheckBox5 = new javax.swing.JCheckBox();
-        jCheckBox6 = new javax.swing.JCheckBox();
+        btn_jawaban = new javax.swing.JToggleButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        hasil = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         kondisi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tidak Parah", "Sedang", "Parah" }));
         kondisi.addActionListener(new java.awt.event.ActionListener() {
@@ -59,92 +54,49 @@ public class view_sppkuser extends javax.swing.JFrame {
                 kondisiActionPerformed(evt);
             }
         });
+        getContentPane().add(kondisi, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 773, 93, -1));
 
-        btn_jawaban.setText("HASIL");
+        btn_panel.setText("PANEL");
+        getContentPane().add(btn_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 960, -1, -1));
+
+        input_luaslahan.setAutoscrolls(false);
+        input_luaslahan.setBorder(null);
+        input_luaslahan.setDoubleBuffered(true);
+        input_luaslahan.setOpaque(false);
+        getContentPane().add(input_luaslahan, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 310, 40));
+
+        input_usia.setBorder(null);
+        input_usia.setOpaque(false);
+        input_usia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                input_usiaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(input_usia, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, 310, 40));
+
+        input_kondisi.setBorder(null);
+        input_kondisi.setOpaque(false);
+        getContentPane().add(input_kondisi, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 380, 310, 40));
+
+        btn_jawaban.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/btn_masukkan.png"))); // NOI18N
+        btn_jawaban.setBorderPainted(false);
+        btn_jawaban.setContentAreaFilled(false);
+        getContentPane().add(btn_jawaban, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 440, 160, -1));
 
         hasil.setColumns(20);
         hasil.setRows(5);
-        jScrollPane1.setViewportView(hasil);
+        hasil.setBorder(null);
+        hasil.setOpaque(false);
+        jScrollPane2.setViewportView(hasil);
 
-        btn_panel.setText("PANEL");
-
-        jCheckBox1.setText("jCheckBox1");
-
-        jCheckBox2.setText("jCheckBox2");
-
-        jCheckBox3.setText("jCheckBox3");
-
-        jCheckBox4.setText("jCheckBox4");
-
-        jCheckBox5.setText("jCheckBox5");
-
-        jCheckBox6.setText("jCheckBox6");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(input_kondisi, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
-                        .addComponent(input_usia, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(input_luaslahan, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(btn_jawaban)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_panel))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(kondisi, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox5)
-                    .addComponent(jCheckBox1)
-                    .addComponent(jCheckBox2)
-                    .addComponent(jCheckBox3)
-                    .addComponent(jCheckBox4)
-                    .addComponent(jCheckBox6))
-                .addGap(28, 28, 28))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(input_luaslahan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(input_usia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(input_kondisi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(kondisi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(53, 53, 53)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_jawaban)
-                            .addComponent(btn_panel)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jCheckBox1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCheckBox2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCheckBox4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCheckBox5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCheckBox6)))
-                .addContainerGap(37, Short.MAX_VALUE))
-        );
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 470, 450, 140));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void input_usiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_input_usiaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_input_usiaActionPerformed
 
     private void kondisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kondisiActionPerformed
         // TODO add your handling code here:
@@ -187,19 +139,13 @@ public class view_sppkuser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_jawaban;
+    private javax.swing.JToggleButton btn_jawaban;
     private javax.swing.JButton btn_panel;
     private javax.swing.JTextArea hasil;
     private javax.swing.JTextField input_kondisi;
     private javax.swing.JTextField input_luaslahan;
     private javax.swing.JTextField input_usia;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox5;
-    private javax.swing.JCheckBox jCheckBox6;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JComboBox<String> kondisi;
     // End of variables declaration//GEN-END:variables
 
@@ -227,30 +173,7 @@ public class view_sppkuser extends javax.swing.JFrame {
         this.hasil.setText(hasil);
     }
 
-    public JCheckBox getjCheckBox1() {
-        return jCheckBox1;
-    }
-
-    public JCheckBox getjCheckBox2() {
-        return jCheckBox2;
-    }
-
-    public JCheckBox getjCheckBox3() {
-        return jCheckBox3;
-    }
-
-    public JCheckBox getjCheckBox4() {
-        return jCheckBox4;
-    }
-
-    public JCheckBox getjCheckBox5() {
-        return jCheckBox5;
-    }
-
-    public JCheckBox getjCheckBox6() {
-        return jCheckBox6;
-    }
-
+   
   
     
 
