@@ -40,7 +40,7 @@ public class tsukamoto {
     double a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27;
     double z1, z2, z3, z4, z5, z6, z7, z8, z9, z10, z11, z12, z13, z14, z15, z16, z17, z18, z19, z20, z21, z22, z23, z24, z25, z26, z27;
 
-    public String proses() {
+    public double proses() {
         // INISIALISAI VARIBEL LUAS LAHAN
         double luaslahan_kecil_bawah = 1000, luaslahan_kecil_atas = 36000;
         double luaslahan_sedang_bawah = 24000, luaslahan_sedang_tengah = 42000, luaslahan_sedang_atas = 60000;
@@ -54,15 +54,15 @@ public class tsukamoto {
         // INISIALISAI VARIBEL KONDISI TANAMAN
         double kondisitanaman_tidakparah_bawah = 1, kondisitanaman_tidakparah_atas = 3;
         double kondisitanaman_sedang_bawah = 2, kondisitanaman_sedang_tengah = 3.5, kondisitanaman_sedang_atas = 5;
-        double kondisitanaman_parah_bawah = 2, kondisitanaman_parah_atas = 7;
+        double kondisitanaman_parah_bawah = 4, kondisitanaman_parah_atas = 7;
 
         // INISIALISAI VARIBEL DOSIS
         double dosis_sedikit_bawah = 25, dosis_sedikit_atas = 50;
         double dosis_sedang_bawah = 45, dosis_sedang_tengah = 67.5, dosis_sedang_atas = 90;
         double dosis_banyak_bawah = 85, dosis_banyak_atas = 100;
         //fuzzyfikasi//
-
-        // fungsi keanggotaan luas rendah
+        // fungsi keanggotaan suhu rendah
+          // fungsi keanggotaan luas rendah
         if (luaslahan < luaslahan_kecil_bawah) {
             nluaslahan_sempit = 1;
         } else if (luaslahan_kecil_bawah <= luaslahan && luaslahan <= luaslahan_kecil_atas) {
@@ -70,9 +70,10 @@ public class tsukamoto {
         } else {
             nluaslahan_sempit = 0;
         }
-
-        // fungsi keanggotaan luas sedang
-        if (luaslahan_sedang_bawah <= luaslahan && luaslahan <= luaslahan_sedang_tengah) {
+       
+        if (luaslahan_kecil_atas == luaslahan) {
+            nluaslahan_sedang = 1;
+        } else if (luaslahan_sedang_bawah <= luaslahan && luaslahan <= luaslahan_sedang_tengah) {
             nluaslahan_sedang = (luaslahan - luaslahan_sedang_bawah) / (luaslahan_sedang_tengah - luaslahan_sedang_bawah);
         } else if (luaslahan_sedang_tengah <= luaslahan && luaslahan <= luaslahan_sedang_atas) {
             nluaslahan_sedang = (luaslahan_sedang_atas - luaslahan) / (luaslahan_sedang_atas - luaslahan_sedang_tengah);
@@ -320,17 +321,69 @@ public class tsukamoto {
                 + AxZ9 + AxZ10 + AxZ11 + AxZ12 + AxZ13 + AxZ14 + AxZ15
                 + AxZ16 + AxZ17 + AxZ18 + AxZ19 + AxZ20 + AxZ21 + AxZ22
                 + AxZ23 + AxZ24 + AxZ25 + AxZ26 + AxZ27;
-        System.out.println( +AxZ1+" "+ AxZ2 +" "+ AxZ3 +" "+ AxZ4 +" "+ AxZ5 +" "+ AxZ6 +" "+ AxZ7 +" "+ AxZ8+" "+
-                + AxZ9 +" "+ AxZ10 + " "+AxZ11 +" "+ AxZ12 +" "+ AxZ13 +" "+ AxZ14 +" "+ AxZ15
-                +" "+ AxZ16 + " "+AxZ17 + " "+AxZ18 +" "+ AxZ19 +" "+ AxZ20 +" "+ AxZ21 +" "+ AxZ22
-                +" "+ AxZ23 +" "+ AxZ24 +" "+ AxZ25 +" "+ AxZ26 +" "+ AxZ27);
+
+       
         double sum_A = a1 + a2 + a3 + a4 + a5 + a6 + a7 + a8 + a9 + a10
                 + a11 + a12 + a13 + a14 + a15 + a16 + a17 + a18 + a19
                 + a20 + a21 + a22 + a23 + a24 + a25 + a26 + a27;
         dosis = sum_AxZ / sum_A;
-        System.out.println(sum_AxZ);
-        System.out.println(sum_A);
-        System.out.println(dosis);
+        System.out.println("luas lahan = " + luaslahan);
+        System.out.println("nilai dosis" + dosis);
+        System.out.println("=============================================================================================================================");
+        System.out.println("");
+        System.out.println("====================================================================");
+        System.out.println("             FUNGSI KEANGGOTAAN TIAP VARIABEL");
+        System.out.println("====================================================================");
+        System.out.printf("Parameter\t || Luas lahan\t || Usia\t || Kondisi tanaman\n");
+        System.out.println("====================================================================");
+        System.out.printf("Rendah\t\t || " + "%.2f", nluaslahan_sempit);
+        System.out.printf("\t || " + "%.2f", nusia_muda);
+        System.out.printf("\t || " + "%.2f", nkondisitanaman_tidakparah);
+        System.out.printf("\n");
+        System.out.printf("Sedang\t\t || " + "%.2f", nluaslahan_sedang);
+        System.out.printf("\t || " + "%.2f", nusia_sedang);
+        System.out.printf("\t || " + "%.2f", nkondisitanaman_sedang);
+        System.out.printf("\n");
+        System.out.printf("Tinggi\t\t || " + "%.2f", nluaslahan_besar);
+        System.out.printf("\t || " + "%.2f", nusia_tua);
+        System.out.printf("\t || " + "%.2f", nkondisitanaman_parah);
+        System.out.printf("\n");
+        System.out.println("====================================================================");
+        System.out.println("");
+
+        System.out.println("=====================================================");
+        System.out.println("                  Nilai Tiap Rule");
+        System.out.println("=====================================================");
+        System.out.println("Rule\t\tA\t\tZ\t\tAxZ");
+        System.out.println("=====================================================");
+        System.out.println("R1\t\t" + String.format("%.1f", a1) + "\t\t" + String.format("%.1f", z1) + "\t\t" + String.format("%.1f", AxZ1));
+        System.out.println("R2\t\t" + String.format("%.1f", a2) + "\t\t" + String.format("%.1f", z2) + "\t\t" + String.format("%.1f", AxZ2));
+        System.out.println("R3\t\t" + String.format("%.1f", a3) + "\t\t" + String.format("%.1f", z3) + "\t\t" + String.format("%.1f", AxZ3));
+        System.out.println("R4\t\t" + String.format("%.1f", a4) + "\t\t" + String.format("%.1f", z4) + "\t\t" + String.format("%.1f", AxZ4));
+        System.out.println("R4\t\t" + String.format("%.1f", a5) + "\t\t" + String.format("%.1f", z5) + "\t\t" + String.format("%.1f", AxZ5));
+        System.out.println("R5\t\t" + String.format("%.1f", a6) + "\t\t" + String.format("%.1f", z6) + "\t\t" + String.format("%.1f", AxZ6));
+        System.out.println("R6\t\t" + String.format("%.1f", a7) + "\t\t" + String.format("%.1f", z7) + "\t\t" + String.format("%.1f", AxZ7));
+        System.out.println("R8\t\t" + String.format("%.1f", a8) + "\t\t" + String.format("%.1f", z8) + "\t\t" + String.format("%.1f", AxZ8));
+        System.out.println("R7\t\t" + String.format("%.1f", a9) + "\t\t" + String.format("%.1f", z9) + "\t\t" + String.format("%.1f", AxZ9));
+        System.out.println("R8\t\t" + String.format("%.1f", a10) + "\t\t" + String.format("%.1f", z10) + "\t\t" + String.format("%.1f", AxZ10));
+        System.out.println("R9\t\t" + String.format("%.1f", a11) + "\t\t" + String.format("%.1f", z11) + "\t\t" + String.format("%.1f", AxZ11));
+        System.out.println("R12\t\t" + String.format("%.1f", a12) + "\t\t" + String.format("%.1f", z12) + "\t\t" + String.format("%.1f", AxZ12));
+        System.out.println("R10\t\t" + String.format("%.1f", a13) + "\t\t" + String.format("%.1f", z13) + "\t\t" + String.format("%.1f", AxZ13));
+        System.out.println("R11\t\t" + String.format("%.1f", a14) + "\t\t" + String.format("%.1f", z14) + "\t\t" + String.format("%.1f", AxZ14));
+        System.out.println("R12\t\t" + String.format("%.1f", a15) + "\t\t" + String.format("%.1f", z15) + "\t\t" + String.format("%.1f", AxZ15));
+        System.out.println("R16\t\t" + String.format("%.1f", a16) + "\t\t" + String.format("%.1f", z16) + "\t\t" + String.format("%.1f", AxZ16));
+        System.out.println("R13\t\t" + String.format("%.1f", a17) + "\t\t" + String.format("%.1f", z17) + "\t\t" + String.format("%.1f", AxZ17));
+        System.out.println("R14\t\t" + String.format("%.1f", a18) + "\t\t" + String.format("%.1f", z18) + "\t\t" + String.format("%.1f", AxZ18));
+        System.out.println("R15\t\t" + String.format("%.1f", a19) + "\t\t" + String.format("%.1f", z19) + "\t\t" + String.format("%.1f", AxZ19));
+        System.out.println("R20\t\t" + String.format("%.1f", a20) + "\t\t" + String.format("%.1f", z20) + "\t\t" + String.format("%.1f", AxZ20));
+        System.out.println("R16\t\t" + String.format("%.1f", a21) + "\t\t" + String.format("%.1f", z21) + "\t\t" + String.format("%.1f", AxZ21));
+        System.out.println("R17\t\t" + String.format("%.1f", a22) + "\t\t" + String.format("%.1f", z22) + "\t\t" + String.format("%.1f", AxZ22));
+        System.out.println("R18\t\t" + String.format("%.1f", a23) + "\t\t" + String.format("%.1f", z23) + "\t\t" + String.format("%.1f", AxZ23));
+        System.out.println("R24\t\t" + String.format("%.1f", a24) + "\t\t" + String.format("%.1f", z24) + "\t\t" + String.format("%.1f", AxZ24));
+        System.out.println("R24\t\t" + String.format("%.1f", a25) + "\t\t" + String.format("%.1f", z25) + "\t\t" + String.format("%.1f", AxZ25));
+        System.out.println("R24\t\t" + String.format("%.1f", a26) + "\t\t" + String.format("%.1f", z26) + "\t\t" + String.format("%.1f", AxZ26));
+        System.out.println("R24\t\t" + String.format("%.1f", a27) + "\t\t" + String.format("%.1f", z27) + "\t\t" + String.format("%.1f", AxZ27));
+
         // fungsi keanggotaan dosis sedikit
         if (dosis < dosis_sedikit_bawah) {
             ndosis_sedikit = 1;
@@ -359,17 +412,16 @@ public class tsukamoto {
         }
 
         // membandingkan masing2 fungsi keanggotaan untuk mencari hasil akhir
-        if (ndosis_sedikit > ndosis_sedang && ndosis_sedikit > ndosis_sedikit) {
-            hasil_dosis = "dosis sedikit";
-        } else if (ndosis_sedang > ndosis_sedikit && ndosis_sedang > ndosis_banyak) {
-            hasil_dosis = "dosis sedang";
-        } else if (ndosis_banyak > ndosis_sedikit && ndosis_banyak > ndosis_sedang) {
-            hasil_dosis = "dosis tiggi";
-        } else {
-            hasil_dosis = "Dosis sangat Tinggi";
-        }
-        return hasil_dosis;
+//        if (ndosis_sedikit > ndosis_sedang && ndosis_sedikit > ndosis_banyak) {
+//            hasil_dosis = "dosis sedikit";
+//        } else if (ndosis_sedang > ndosis_sedikit && ndosis_sedang > ndosis_banyak) {
+//            hasil_dosis = "dosis sedang";
+//        } else if (ndosis_banyak > ndosis_sedikit && ndosis_banyak > ndosis_sedang) {
+//            hasil_dosis = "dosis tiggi";
+//        } else {
+//            hasil_dosis = "Dosis sangat Tinggi";
+//        }
+        return dosis;
     }
-         
-}
 
+}

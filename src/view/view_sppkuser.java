@@ -40,10 +40,12 @@ public class view_sppkuser extends javax.swing.JFrame {
         btn_panel = new javax.swing.JButton();
         input_luaslahan = new javax.swing.JTextField();
         input_usia = new javax.swing.JTextField();
+        btn_gunakan = new javax.swing.JButton();
         input_kondisi = new javax.swing.JTextField();
         btn_jawaban = new javax.swing.JToggleButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         hasil = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -74,6 +76,9 @@ public class view_sppkuser extends javax.swing.JFrame {
         });
         getContentPane().add(input_usia, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, 310, 40));
 
+        btn_gunakan.setText("Gunakan");
+        getContentPane().add(btn_gunakan, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 550, -1, -1));
+
         input_kondisi.setBorder(null);
         input_kondisi.setOpaque(false);
         getContentPane().add(input_kondisi, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 380, 310, 40));
@@ -90,6 +95,9 @@ public class view_sppkuser extends javax.swing.JFrame {
         jScrollPane2.setViewportView(hasil);
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 470, 450, 140));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/bg.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, -1, 690));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -139,12 +147,14 @@ public class view_sppkuser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_gunakan;
     private javax.swing.JToggleButton btn_jawaban;
     private javax.swing.JButton btn_panel;
     private javax.swing.JTextArea hasil;
     private javax.swing.JTextField input_kondisi;
     private javax.swing.JTextField input_luaslahan;
     private javax.swing.JTextField input_usia;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JComboBox<String> kondisi;
     // End of variables declaration//GEN-END:variables
@@ -153,8 +163,8 @@ public class view_sppkuser extends javax.swing.JFrame {
         this.btn_jawaban.addActionListener(a);
     }
 
-    public void btn_panel(ActionListener a) {
-        this.btn_panel.addActionListener(a);
+    public void btn_gunakan(ActionListener a) {
+        this.btn_gunakan.addActionListener(a);
     }
 
     public String getInput_usia() {
@@ -171,6 +181,9 @@ public class view_sppkuser extends javax.swing.JFrame {
    
      public void setHasil(String hasil) {
         this.hasil.setText(hasil);
+    }
+     public String getHasil() {
+        return hasil.getText();
     }
 
    
